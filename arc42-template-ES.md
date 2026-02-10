@@ -1,220 +1,203 @@
 ---
-date: Enero 2023
-title: Plantilla ![arc42](images/arc42-logo.png)
+date: Febrero 2026
+title: Arquitectura de Software – Sistema ERP
 ---
 
-# 
+# Documentación de Arquitectura – Sistema ERP
 
-**Acerca de arc42**
+Este documento describe la arquitectura del sistema ERP empresarial utilizando la plantilla arc42.
 
-arc42, La plantilla de documentación para arquitectura de sistemas y de
-software.
+---
 
-Por Dr. Gernot Starke, Dr. Peter Hruschka y otros contribuyentes.
+# Introducción y Metas
 
-Revisión de la plantilla: 7.0 ES (basada en asciidoc), Enero 2017
+## Vista de Requerimientos
 
-© Reconocemos que este documento utiliza material de la plantilla de
-arquitectura arc42, <https://www.arc42.org>. Creada por Dr. Peter
-Hruschka y Dr. Gernot Starke.
+El sistema ERP permitirá a la empresa gestionar de manera integrada sus procesos de:
 
-# Introducción y Metas {#section-introduction-and-goals}
+- Compras  
+- Facturación  
+- Inventario y costos  
+- Activos fijos  
+- Gestión de empleados  
+- Reportes ejecutivos (EIS)
 
-## Vista de Requerimientos {#_vista_de_requerimientos}
+El objetivo principal es centralizar la información para mejorar el control operativo, reducir errores manuales y facilitar la toma de decisiones.
 
-## Metas de Calidad {#_metas_de_calidad}
+## Metas de Calidad
 
-## Partes interesadas (Stakeholders) {#_partes_interesadas_stakeholders}
+| Prioridad | Meta de Calidad | Descripción |
+|----------|-----------------|-------------|
+| Alta | Usabilidad | El sistema debe ser fácil de usar para personal administrativo |
+| Alta | Disponibilidad | El sistema debe estar disponible durante el horario laboral |
+| Media | Seguridad | Protección de datos financieros y de empleados |
+| Media | Rendimiento | Respuesta menor a 3 segundos en operaciones comunes |
+| Baja | Escalabilidad | Posibilidad de agregar nuevos módulos en el futuro |
 
-+-------------+---------------------------+---------------------------+
-| Rol/Nombre  | Contacto                  | Expectativas              |
-+=============+===========================+===========================+
-| *           | *\<Contact-1\>*           | *\<Expectation-1\>*       |
-| \<Role-1\>* |                           |                           |
-+-------------+---------------------------+---------------------------+
-| *           | *\<Contact-2\>*           | *\<Expectation-2\>*       |
-| \<Role-2\>* |                           |                           |
-+-------------+---------------------------+---------------------------+
+## Partes interesadas (Stakeholders)
 
-# Restricciones de la Arquitectura {#section-architecture-constraints}
+| Rol | Contacto | Expectativas |
+|-----|----------|--------------|
+| Gerente General | Dirección | Reportes claros y toma de decisiones |
+| Encargado de Compras | Área de compras | Registrar proveedores y órdenes fácilmente |
+| Contador | Área financiera | Control de facturación y activos |
+| RRHH | Recursos Humanos | Gestión de empleados |
+| Administrador TI | Sistemas | Sistema estable y seguro |
 
-# Alcance y Contexto del Sistema {#section-context-and-scope}
+---
 
-## Contexto de Negocio {#_contexto_de_negocio}
+# Restricciones de la Arquitectura
 
-**\<Diagrama o Tabla\>**
+- El sistema será una aplicación web
+- Se utilizará una base de datos relacional
+- Debe funcionar en navegadores modernos
+- Presupuesto limitado para infraestructura
+- Uso de tecnologías open source
 
-**\<optionally: Explanation of external domain interfaces\>**
+---
 
-## Contexto Técnico {#_contexto_técnico}
+# Alcance y Contexto del Sistema
 
-**\<Diagrama o Tabla\>**
+## Contexto de Negocio
 
-**\<Opcional: Explicación de las interfases técnicas\>**
+El ERP interactúa con:
 
-**\<Mapeo de Entrada/Salida a canales\>**
+- Proveedores
+- Clientes
+- Empleados
+- Gerencia
 
-# Estrategia de solución {#section-solution-strategy}
+El sistema centraliza la información de todas las áreas.
 
-# Vista de Bloques {#section-building-block-view}
+## Contexto Técnico
 
-## Sistema General de Caja Blanca {#_sistema_general_de_caja_blanca}
+El sistema estará compuesto por:
 
-***\<Diagrama general\>***
+- Frontend web
+- Backend con API REST
+- Base de datos relacional
 
-Motivación
+---
 
-:   *\<Explicación en texto\>*
+# Estrategia de solución
 
-Bloques de construcción contenidos
+Se implementará una arquitectura en capas:
 
-:   *\<Desripción de los bloques de construcción contenidos (Cajas
-    negras)\>*
+1. Capa de presentación (Frontend)
+2. Capa de lógica de negocio (Backend)
+3. Capa de datos (Base de datos)
 
-Interfases importantes
+Esto permite mantenimiento, escalabilidad y separación de responsabilidades.
 
-:   *\<Descripción de las interfases importantes\>*
+---
 
-### \<Caja Negra 1\> {#_caja_negra_1}
+# Vista de Bloques
 
-*\<Propósito/Responsabilidad\>*
+## Sistema General de Caja Blanca
 
-*\<Interfase(s)\>*
+**Bloques principales del sistema:**
 
-*\<(Opcional) Características de Calidad/Performance\>*
+- Módulo de Compras
+- Módulo de Facturación
+- Módulo de Inventario
+- Módulo de Activos Fijos
+- Módulo de Empleados
+- Módulo de Reportes (EIS)
+- Base de Datos
 
-*\<(Opcional) Ubicación Archivo/Directorio\>*
+### Módulo de Compras
+Gestiona proveedores y órdenes de compra.
 
-*\<(Opcional) Requerimientos Satisfechos\>*
+### Módulo de Facturación
+Administra facturas emitidas a clientes.
 
-*\<(Opcional) Riesgos/Problemas/Incidentes Abiertos\>*
+### Módulo de Inventario
+Controla productos, stock y costos.
 
-### \<Caja Negra 2\> {#_caja_negra_2}
+### Módulo de Activos Fijos
+Registra bienes de la empresa y su depreciación.
 
-*\<plantilla de caja negra\>*
+### Módulo de Empleados
+Gestiona la información del personal.
 
-### \<Caja Negra N\> {#_caja_negra_n}
+### Módulo EIS
+Genera reportes ejecutivos y estadísticas.
 
-*\<Plantilla de caja negra\>*
+---
 
-### \<Interfase 1\> {#_interfase_1}
+# Vista de Ejecución
 
-...​
+## Escenario: Registrar Orden de Compra
 
-### \<Interfase m\> {#_interfase_m}
+1. Usuario ingresa al módulo de compras
+2. Crea una orden con productos
+3. El sistema valida datos
+4. Se guarda en base de datos
+5. Se genera número de orden
 
-## Nivel 2 {#_nivel_2}
+---
 
-### Caja Blanca *\<bloque de construcción 1\>* {#_caja_blanca_bloque_de_construcción_1}
+# Vista de Despliegue
 
-*\<plantilla de caja blanca\>*
+## Nivel de infraestructura 1
 
-### Caja Blanca *\<bloque de construcción 2\>* {#_caja_blanca_bloque_de_construcción_2}
+El sistema se desplegará en:
 
-*\<plantilla de caja blanca\>*
+- Servidor web
+- Servidor de base de datos
 
-...​
+Los usuarios accederán mediante navegador web.
 
-### Caja Blanca *\<bloque de construcción m\>* {#_caja_blanca_bloque_de_construcción_m}
+---
 
-*\<plantilla de caja blanca\>*
+# Conceptos Transversales
 
-## Nivel 3 {#_nivel_3}
+## Seguridad
+Autenticación mediante usuario y contraseña.
 
-### Caja Blanca \<\_bloque de construcción x.1\_\> {#_caja_blanca_bloque_de_construcción_x_1}
+## Control de acceso
+Roles: Administrador, Compras, Contador, RRHH, Gerencia.
 
-*\<plantilla de caja blanca\>*
+## Persistencia
+Base de datos relacional para almacenar información.
 
-### Caja Blanca \<\_bloque de construcción x.2\_\> {#_caja_blanca_bloque_de_construcción_x_2}
+---
 
-*\<plantilla de caja blanca\>*
+# Decisiones de Diseño
 
-### Caja Blanca \<\_bloque de construcción y.1\_\> {#_caja_blanca_bloque_de_construcción_y_1}
+- Arquitectura en capas
+- Aplicación web centralizada
+- Base de datos relacional
+- Separación por módulos funcionales
 
-*\<plantilla de caja blanca\>*
+---
 
-# Vista de Ejecución {#section-runtime-view}
+# Requerimientos de Calidad
 
-## \<Escenario de ejecución 1\> {#_escenario_de_ejecución_1}
+## Escenarios de calidad
 
--   *\<Inserte un diagrama de ejecución o la descripción del
-    escenario\>*
+**Disponibilidad:** El sistema debe estar disponible al menos el 95% del tiempo laboral.
 
--   *\<Inserte la descripción de aspectos notables de las interacciones
-    entre los bloques de construcción mostrados en este diagrama.\>*
+**Rendimiento:** Las consultas de reportes no deben tardar más de 5 segundos.
 
-## \<Escenario de ejecución 2\> {#_escenario_de_ejecución_2}
+**Seguridad:** Solo usuarios autenticados pueden acceder.
 
-## ...​
+---
 
-## \<Escenario de ejecución n\> {#_escenario_de_ejecución_n}
+# Riesgos y deuda técnica
 
-# Vista de Despliegue {#section-deployment-view}
+- Falta de experiencia en algunos módulos
+- Posibles retrasos en integración entre módulos
+- Limitaciones de infraestructura
 
-## Nivel de infraestructura 1 {#_nivel_de_infraestructura_1}
+---
 
-***\<Diagrama General\>***
+# Glosario
 
-Motivación
-
-:   *\<Explicación en forma textual\>*
-
-Características de Calidad/Rendimiento
-
-:   *\<Explicación en forma textual\>*
-
-    Mapeo de los Bloques de Construcción a Infraestructura
-
-    :   *\<Descripción del mapeo\>*
-
-## Nivel de Infraestructura 2 {#_nivel_de_infraestructura_2}
-
-### *\<Elemento de Infraestructura 1\>* {#_elemento_de_infraestructura_1}
-
-*\<diagrama + explicación\>*
-
-### *\<Elemento de Infraestructura 2\>* {#_elemento_de_infraestructura_2}
-
-*\<diagrama + explicación\>*
-
-...​
-
-### *\<Elemento de Infraestructura n\>* {#_elemento_de_infraestructura_n}
-
-*\<diagrama + explicación\>*
-
-# Conceptos Transversales (Cross-cutting) {#section-concepts}
-
-## *\<Concepto 1\>* {#_concepto_1}
-
-*\<explicación\>*
-
-## *\<Concepto 2\>* {#_concepto_2}
-
-*\<explicación\>*
-
-...​
-
-## *\<Concepto n\>* {#_concepto_n}
-
-*\<explicación\>*
-
-# Decisiones de Diseño {#section-design-decisions}
-
-# Requerimientos de Calidad {#section-quality-scenarios}
-
-## Árbol de Calidad {#_árbol_de_calidad}
-
-## Escenarios de calidad {#_escenarios_de_calidad}
-
-# Riesgos y deuda técnica {#section-technical-risks}
-
-# Glosario {#section-glossary}
-
-+----------------------+-----------------------------------------------+
-| Término              | Definición                                    |
-+======================+===============================================+
-| *\<Término-1\>*      | *\<definicion-1\>*                            |
-+----------------------+-----------------------------------------------+
-| *\<Término-2\>*      | *\<definicion-2\>*                            |
-+----------------------+-----------------------------------------------+
+| Término | Definición |
+|--------|------------|
+| ERP | Sistema de planificación de recursos empresariales |
+| Orden de compra | Documento para solicitar productos a un proveedor |
+| Factura | Documento de venta a un cliente |
+| Inventario | Registro de productos disponibles |
+| EIS | Sistema de información ejecutiva |
